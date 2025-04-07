@@ -7,8 +7,9 @@
 
 # Basic command
 ffmpeg -i "$1" \
-       -video_size "$2"  \
+       -video_size "$2" \
        -f v4l2 -input_format mjpeg \
        -vcodec libx264 -preset ultrafast -tune zerolatency \
-       -f rtp rtp://localhost:5004 \
+       -metadata title="H264 stream" \
+       -f rtp rtp://localhost:1337 \
        -sdp_file stream.sdp
