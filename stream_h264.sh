@@ -13,5 +13,5 @@ ffmpeg -f v4l2 -input_format mjpeg \
        -vcodec libx264 -preset ultrafast -tune zerolatency \
        -fflags nobuffer -flags low_delay -fflags +genpts \
        -metadata title="H264 stream" \
-       -f rtp rtp://192.168.8.218:1337 \
+       -f rtp rtp://localhost:1337 \
        -sdp_file stream.sdp
