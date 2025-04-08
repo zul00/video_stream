@@ -6,10 +6,12 @@
 ## ffmpeg -f v4l2 -list_formats all -i /dev/video0
 
 # Basic command
-ffmpeg -i "$1" \
+ffmpeg -f v4l2 -input_format mjpeg \
+       -framerate 15 \
        -video_size "$2" \
-       -f v4l2 -input_format mjpeg \
+       -i "$1" \
        -vcodec libx264 -preset ultrafast -tune zerolatency \
+       -fflags nobuffer -flags low_delay -fflags +genpts \
        -metadata title="H264 stream" \
-       -f rtp rtp://localhost:1337 \
+       -f rtp rtp://192.168.8.218:1337 \
        -sdp_file stream.sdp
