@@ -8,7 +8,7 @@
 # Basic command
 LIBVA_DRIVER_NAME=i965 \
         ffmpeg -f v4l2 -input_format mjpeg \
-       -framerate 15 \
+       -framerate "$3" \
        -video_size "$2" \
        -i "$1" \
        -vaapi_device /dev/dri/renderD128 \
@@ -16,5 +16,5 @@ LIBVA_DRIVER_NAME=i965 \
        -c:v h264_vaapi \
        -tune zerolatency -profile:v constrained_baseline \
        -b:v 1M -maxrate 1M -bufsize 2M -g 30 \
-       -f rtp rtp://192.168.8.218:1337 \
+       -f rtp rtp://localhost:1338 \
        -sdp_file stream.sdp
