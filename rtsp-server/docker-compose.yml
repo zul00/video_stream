@@ -1,0 +1,12 @@
+services:
+  mediamtx:
+    image: bluenviron/mediamtx:latest
+    container_name: mediamtx
+    network_mode: host
+    # ports:
+    #   - "8554:8554"    # RTSP
+    #   - "8888:8888"    # HTTP (optional, if using web UI or API)
+    #   - "8889:8889"    # RTSP over WebRTC (optional)
+    restart: unless-stopped
+    # volumes:
+    #   - ./mediamtx.yml:/mediamtx.yml:ro  # Optional custom config
